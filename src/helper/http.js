@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import router from '../router';
+// import router from '../router';
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -29,7 +29,7 @@ http.interceptors.response.use(
   function (error) {
     toast('Your token was invalid, please login again!', { type: 'error' });
     localStorage.clear();
-    router.navigate('/login');
+    // router.navigate('/login');
     return Promise.reject(error);
   },
 );
