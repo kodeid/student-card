@@ -101,7 +101,7 @@ const getSummaryOverview = (summaryPerPhase) => {
   return summaryObj;
 };
 
-export default function StudentRoleScore({ detail, filteredData, getGrade }) {
+export default function StudentRoleScore({ detail, filteredData, getGrade, onMobile }) {
   const url = `${baseUrl}/developer-roles`;
   const { data, isLoading } = useFetch(url);
   const [strongestRole, setStrongestRole] = useState(null);
@@ -150,11 +150,15 @@ export default function StudentRoleScore({ detail, filteredData, getGrade }) {
       >
         {Math.round(strongestRole.average * 10) / 10}%
       </div>
-      <label htmlFor="roleScore" className="text-md font-extrabold tooltip cursor-pointer" data-tip="strongest role">
+      <label
+        htmlFor={`roleScore${onMobile ? '-mob' : ''}`}
+        className="text-md font-extrabold tooltip cursor-pointer"
+        data-tip="strongest role"
+      >
         {strongestRole.name}
       </label>
-      <span className="text-xs opacity-40">Strongest Role</span>
-      <Modal idModal={'roleScore'}>
+      <span className="text-xs opacity-40 text-center">Strongest Role</span>
+      <Modal idModal={`roleScore${onMobile ? '-mob' : ''}`}>
         {totalScore
           .sort((a, b) => b.average - a.average)
           .map((role, idx) => {

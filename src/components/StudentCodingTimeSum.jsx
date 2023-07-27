@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { codingTimeFormater } from '../helper/formatter';
 import Modal from './Modal';
 
-export default function StudentCodingTimeSum({ codingTime }) {
+export default function StudentCodingTimeSum({ codingTime, onMobile }) {
   const codingTimeFormated = useMemo(() => {
     return codingTimeFormater(codingTime);
   }, [codingTime]);
@@ -22,14 +22,14 @@ export default function StudentCodingTimeSum({ codingTime }) {
         {!codingTimeFormated.avgHour ? (
           '-'
         ) : (
-          <label htmlFor="codingTimeSumModal" className="cursor-pointer">
+          <label htmlFor={`codingTimeSumModal${onMobile ? '-mob' : ''}`} className="cursor-pointer">
             <span className="font-extrabold">{codingTimeFormated.avgHour}</span>h
             <span className="font-extrabold ml-2">{codingTimeFormated.avgMinute}</span>m
           </label>
         )}
       </span>
       <span className="text-xs opacity-40">Avg. Coding Time / day</span>
-      <Modal idModal={'codingTimeSumModal'}>
+      <Modal idModal={`codingTimeSumModal${onMobile ? '-mob' : ''}`}>
         {codingTimeFormated.category && (
           <>
             <div className="flex justify-center w-full">

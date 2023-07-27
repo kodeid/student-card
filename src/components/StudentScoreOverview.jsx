@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Modal from './Modal';
 
-export default function StudentScoreOverview({ scoreOverview, getGrade }) {
+export default function StudentScoreOverview({ scoreOverview, getGrade, onMobile }) {
   const [lowestSubject, setLowestSubject] = useState(null);
   const [lowestSubjectGrade, setLowestSubjectGrade] = useState(null);
 
@@ -34,13 +34,13 @@ export default function StudentScoreOverview({ scoreOverview, getGrade }) {
       >
         {Math.round(lowestSubject.totalPercentage * 100) / 100}%
       </div>
-      <label htmlFor="subjectOverview" className="cursor-pointer">
+      <label htmlFor={`subjectOverview${onMobile ? '-mob' : ''}`} className="cursor-pointer">
         <span className="text-md font-extrabold tooltip" data-tip="Weakness Subject">
           {lowestSubject.title}
         </span>
       </label>
-      <span className="text-xs opacity-40">Weakness Subject</span>
-      <Modal idModal="subjectOverview">
+      <span className="text-xs opacity-40 text-center">Weakness Subject</span>
+      <Modal idModal={`subjectOverview${onMobile ? '-mob' : ''}`}>
         <div className="grid grid-cols-1 gap-3">
           {Object.keys(scoreOverview)
             .sort((a, b) => {

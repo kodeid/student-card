@@ -205,10 +205,10 @@ export default function CardHeader({ detail, filteredData }) {
           src={`https://randomfox.ca/images/${detail?.batches[0]?.name.split('-')[1]}.jpg`}
         /> */}
       </div>
-      <div className="p-5 flex justify-center mt-44 bg-white w-full justify-between items-end">
-        <div className="w-1/3 overflow-auto justify-center items-center flex gap-4 mb-10">
+      <div className="p-5 flex justify-center mt-44 bg-white w-full md:justify-between justify-center items-end">
+        <div className="w-1/3 overflow-auto justify-center items-center gap-4 mb-10 md:flex hidden">
           <StudentRoleScore detail={detail} filteredData={filteredData} getGrade={getGrade} />
-          <div className="divider lg:divider-horizontal w-1/3"></div>
+          <div className="divider md:divider-horizontal w-1/3"></div>
           <StudentScoreOverview scoreOverview={scoreOverview} getGrade={getGrade} />
         </div>
         <div className="flex flex-col items-center mb-5 w-1/3">
@@ -242,8 +242,23 @@ export default function CardHeader({ detail, filteredData }) {
             </a>
           </div>
         </div>
-        <div className="w-1/3 overflow-auto justify-center items-center flex mb-10">
+        <div className="w-1/3 overflow-auto justify-center items-center mb-10 md:flex hidden">
           <StudentCodingTimeSum codingTime={detail?.codingTime} />
+        </div>
+      </div>
+      <div className="block md:hidden w-full">
+        <div className="justify-center items-center flex gap-4 mb-10">
+          <div className="w-1/4">
+            <StudentRoleScore onMobile={true} detail={detail} filteredData={filteredData} getGrade={getGrade} />
+          </div>
+          <div className="divider divider-horizontal"></div>
+          <div className="w-1/4">
+            <StudentScoreOverview onMobile={true} scoreOverview={scoreOverview} getGrade={getGrade} />
+          </div>
+          <div className="divider divider-horizontal"></div>
+          <div className="w-1/4">
+            <StudentCodingTimeSum onMobile={true} codingTime={detail?.codingTime} />
+          </div>
         </div>
       </div>
     </div>
