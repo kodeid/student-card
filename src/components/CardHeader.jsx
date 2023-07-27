@@ -246,17 +246,17 @@ export default function CardHeader({ detail, filteredData }) {
           <StudentCodingTimeSum codingTime={detail?.codingTime} />
         </div>
       </div>
-      <div className="block md:hidden w-full">
-        <div className="justify-center items-center flex gap-4 mb-10">
-          <div className="w-1/4">
+      <div className="block md:hidden w-full px-3">
+        <div className="justify-center flex gap-2 mb-10">
+          <div className="w-1/3">
             <StudentRoleScore onMobile={true} detail={detail} filteredData={filteredData} getGrade={getGrade} />
           </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="w-1/4">
+          <div className="divider divider-horizontal m-0"></div>
+          <div className="w-1/3">
             <StudentScoreOverview onMobile={true} scoreOverview={scoreOverview} getGrade={getGrade} />
           </div>
-          <div className="divider divider-horizontal"></div>
-          <div className="w-1/4">
+          <div className="divider divider-horizontal m-0"></div>
+          <div className="w-1/3">
             <StudentCodingTimeSum onMobile={true} codingTime={detail?.codingTime} />
           </div>
         </div>

@@ -28,7 +28,7 @@ export default function StudentCodingTimeSum({ codingTime, onMobile }) {
           </label>
         )}
       </span>
-      <span className="text-xs opacity-40">Avg. Coding Time / day</span>
+      <span className="text-xs opacity-40 text-center">Avg. Coding Time / day</span>
       <Modal idModal={`codingTimeSumModal${onMobile ? '-mob' : ''}`}>
         {codingTimeFormated.category && (
           <>

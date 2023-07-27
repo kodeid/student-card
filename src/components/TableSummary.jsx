@@ -64,7 +64,7 @@ export default function TableSummary({ score, category }) {
         </tbody>
       </table>
       <div className="text-right">
-        <div>Total Score</div>
+        <div className="leading-5">Total Score</div>
         <span className="md:text-5xl text-2xl font-extrabold">{getTotalPercentageScore()}</span>
       </div>
     </div>

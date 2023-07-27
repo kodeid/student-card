@@ -15,7 +15,7 @@ import { formatDate } from '../helper/dayjs';
 
 export default function CardProfile({ detail }) {
   return (
-    <div className="w-full rounded-lg shadow mb-5 p-10 bg-white flex flex-wrap md:flex-nowrap">
+    <div className="w-full rounded-lg shadow mb-5 p-5 md:p-10 bg-white flex flex-wrap md:flex-nowrap">
       <div className="flex flex-col gap-3 md:w-1/3">
         <h2 className="font-bold">About</h2>
         <div className="flex text-xs">
