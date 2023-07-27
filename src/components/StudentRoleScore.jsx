@@ -110,7 +110,6 @@ export default function StudentRoleScore({ detail, filteredData, getGrade }) {
     if (data && filteredData.length) {
       let result = getSummaryPerPhase(filteredData);
       let summary = getSummaryOverview(result);
-      console.log(summary);
       let scores = data.map((el) => {
         let totalPercentage = 0;
         el.scores = el.components.map((component) => {
@@ -124,7 +123,6 @@ export default function StudentRoleScore({ detail, filteredData, getGrade }) {
 
         return el;
       });
-      console.log(scores);
       return scores;
     }
     return null;

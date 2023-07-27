@@ -175,7 +175,6 @@ const getGrade = (score) => {
 
 export default function CardHeader({ detail, filteredData }) {
   const { studentCardId } = useParams();
-  console.log(detail, '<<<<<<');
 
   const scoreOverview = useMemo(() => {
     if (filteredData.length) {
