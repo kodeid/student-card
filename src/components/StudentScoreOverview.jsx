@@ -35,7 +35,7 @@ export default function StudentScoreOverview({ scoreOverview, getGrade, onMobile
         {Math.round(lowestSubject.totalPercentage * 100) / 100}%
       </div>
       <label htmlFor={`subjectOverview${onMobile ? '-mob' : ''}`} className="cursor-pointer">
-        <span className="text-md font-extrabold tooltip" data-tip="Weakness Subject">
+        <span className="text-md font-extrabold tooltip leading-5" data-tip="Weakness Subject">
           {lowestSubject.title}
         </span>
       </label>

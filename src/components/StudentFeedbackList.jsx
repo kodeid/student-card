@@ -15,7 +15,7 @@ export default function StudentFeedbackList({ filteredData, arrPhase, activePhas
                     return (
                       <div key={i} className="md:w-2/3 w-full flex gap-3 items-start md:flex-row flex-col">
                         <div className="flex md:flex-row flex-row-reverse items-center gap-3">
-                          <div className="md:text-right whitespace-nowrap">
+                          <div className="md:text-right md:whitespace-nowrap">
                             <div className="font-bold">{el.instructor}</div>
                             <div className="opacity-50">{formatDate(el.date)}</div>
                           </div>

@@ -103,7 +103,7 @@ export default function StudentSectionChart({ idx, phase, component, scoreIdx, s
     <div className="mb-10">
       {idx > 0 && <hr className="w-full mb-10 mt-10" />}
       <div className="flex flex-wrap">
-        <div key={idx} className="md:w-3/5 grid gap-4 relative w-full">
+        <div key={idx} className="md:w-3/5 grid gap-4 relative w-full pb-10 md:p-0">
           <h2 className="absolute bottom-0 left-0 flex flex-col">
             <span className="opacity-50">
               {phase.name} {scoreIdx > 0 && ' - Repeat'}{' '}
