@@ -2,7 +2,7 @@ import ScoreCard from './ScoreCard';
 import 'zingchart/es6';
 import ZingChart from 'zingchart-react';
 import { NESTED_PIE_CHART_CONFIG, RADAR_CHART_CONFIG } from '../helper/zingChart';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
 const getConfig = (scores) => {
   const initConfig = JSON.parse(JSON.stringify(RADAR_CHART_CONFIG()));
@@ -88,6 +88,7 @@ const getPieConfig = (scores) => {
 };
 
 export default function StudentSectionChart({ idx, phase, component, scoreIdx, score }) {
+  const windowSize = useRef([window.innerWidth, window.innerHeight]);
   const config = useMemo(() => {
     return getConfig(score[component]);
   }, [score[component]]);
@@ -96,11 +97,13 @@ export default function StudentSectionChart({ idx, phase, component, scoreIdx, s
     return getPieConfig(score[component]);
   }, [score[component]]);
 
+  let size = windowSize.current[0] > 600 ? 400 : 250;
+
   return (
     <div className="mb-10">
       {idx > 0 && <hr className="w-full mb-10 mt-10" />}
-      <div className="flex">
-        <div key={idx} className="w-3/5 grid gap-4 relative">
+      <div className="flex flex-wrap">
+        <div key={idx} className="md:w-3/5 grid gap-4 relative w-full">
           <h2 className="absolute bottom-0 left-0 flex flex-col">
             <span className="opacity-50">
               {phase.name} {scoreIdx > 0 && ' - Repeat'}{' '}
@@ -109,15 +112,15 @@ export default function StudentSectionChart({ idx, phase, component, scoreIdx, s
           </h2>
           <div className="w-full overflow-visible flex justify-center items-center">
             {Object.keys(score[component]).length > 2 ? (
-              <ZingChart height={400} width={400} data={config} />
+              <ZingChart height={size} width={size} data={config} />
             ) : (
               <div className="flex justify-center items-center">
-                <ZingChart height={400} width={400} data={pieConfig} />
+                <ZingChart height={size} width={size} data={pieConfig} />
               </div>
             )}
           </div>
         </div>
-        <div className="w-2/5 flex items-center mt-10">
+        <div className="md:w-2/5 flex items-center mt-10 w-full">
           <div className="w-full grid grid-cols-3 gap-3">
             {Object.keys(score[component])
               .filter((el) => score[component][el].rubricScore)
