@@ -37,8 +37,12 @@ export default function TableSummary({ score, category }) {
   };
 
   return (
-    <div className="flex mt-3 justify-between">
-      <table className="table table-compact table-zebra w-1/4 md:w-1/3">
+    <div className="flex flex-wrap md:flex-row-reverse mt-3 justify-between">
+      <div className="md:flex-none flex-1 flex md:flex-col md:justify-start md:items-end flex-row justify-between items-center mb-3">
+        <div className="leading-5">Total Score</div>
+        <span className="md:text-5xl text-2xl font-extrabold">{getTotalPercentageScore()}</span>
+      </div>
+      <table className="table table-compact table-zebra w-full md:w-1/3">
         <thead>
           <tr>
             <th colSpan={2} className="text-center">
@@ -63,10 +67,6 @@ export default function TableSummary({ score, category }) {
           })}
         </tbody>
       </table>
-      <div className="text-right">
-        <div className="leading-5">Total Score</div>
-        <span className="md:text-5xl text-2xl font-extrabold">{getTotalPercentageScore()}</span>
-      </div>
     </div>
   );
 }

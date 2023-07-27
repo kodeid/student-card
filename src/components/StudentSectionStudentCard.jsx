@@ -32,7 +32,7 @@ export default function StudentSectionStudentCard({ scoreIdx, phase, score }) {
       <div className="w-full flex justify-center">
         <div className="w-full flex flex-col justify-center items-center">
           <h1 className="font-bold text-xl text-center mb-5 mt-5">Student Card</h1>
-          <div className="overflow-x-auto w-full pb-5 w-72 sm:max-w-sm md:max-w-none">
+          <div className="overflow-x-auto pb-5 w-72 md:w-full sm:max-w-sm md:max-w-none">
             <table className="table table-zebra mx-auto text-xs overflow-x-auto">
               {/* head */}
               <thead>
