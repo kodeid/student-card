@@ -1,59 +1,59 @@
-import ScoreCard from './ScoreCard'
-import 'zingchart/es6'
-import ZingChart from 'zingchart-react'
-import {NESTED_PIE_CHART_CONFIG, RADAR_CHART_CONFIG} from '../helper/zingChart'
-import {useMemo} from 'react'
+import ScoreCard from './ScoreCard';
+import 'zingchart/es6';
+import ZingChart from 'zingchart-react';
+import { NESTED_PIE_CHART_CONFIG, RADAR_CHART_CONFIG } from '../helper/zingChart';
+import { useMemo } from 'react';
 
 const getConfig = (scores) => {
-  const initConfig = JSON.parse(JSON.stringify(RADAR_CHART_CONFIG()))
-  const category = []
-  const scaleK = initConfig.scaleK
+  const initConfig = JSON.parse(JSON.stringify(RADAR_CHART_CONFIG()));
+  const category = [];
+  const scaleK = initConfig.scaleK;
   const area = {
     values: [],
     backgroundColor: 'orange',
     lineColor: '#f97316',
-    text: 'hello'
-  }
-  const plot = initConfig.plot
-  const detailsTooltip = []
+    text: 'hello',
+  };
+  const plot = initConfig.plot;
+  const detailsTooltip = [];
   plot.tooltip = {
     text: '%data-detail',
-    backgroundColor: 'black'
-  }
+    backgroundColor: 'black',
+  };
 
   Object.keys(scores).forEach((el) => {
     if (scores[el].rubricScore) {
-      category.push(el)
-      const studentScore = scores[el].studentScore
-      const rubricScore = scores[el].rubricScore
-      const percentage = (studentScore / rubricScore) * 100
-      area.values.push(percentage)
-      let detail = `${Math.round(percentage * 100) / 100}% on ${el}, score: ${studentScore} / ${rubricScore}`
-      detailsTooltip.push(detail)
+      category.push(el);
+      const studentScore = scores[el].studentScore;
+      const rubricScore = scores[el].rubricScore;
+      const percentage = (studentScore / rubricScore) * 100;
+      area.values.push(percentage);
+      let detail = `${Math.round(percentage * 100) / 100}% on ${el}, score: ${studentScore} / ${rubricScore}`;
+      detailsTooltip.push(detail);
     }
-  })
+  });
 
-  plot['data-detail'] = detailsTooltip
-  scaleK.labels = category
-  scaleK.values = `0:${category.length - 1}:1`
+  plot['data-detail'] = detailsTooltip;
+  scaleK.labels = category;
+  scaleK.values = `0:${category.length - 1}:1`;
   return {
     ...initConfig,
     scaleK: scaleK,
-    series: [area]
-  }
-}
+    series: [area],
+  };
+};
 
 const getPieConfig = (scores) => {
-  const initConfig = JSON.parse(JSON.stringify(NESTED_PIE_CHART_CONFIG()))
-  let colors = ['#f97316', '#fdba74']
-  let area = []
-  let shapes = []
+  const initConfig = JSON.parse(JSON.stringify(NESTED_PIE_CHART_CONFIG()));
+  let colors = ['#f97316', '#fdba74'];
+  let area = [];
+  let shapes = [];
 
   Object.keys(scores).forEach((el, idx) => {
     if (scores[el].rubricScore) {
-      const studentScore = scores[el].studentScore
-      const rubricScore = scores[el].rubricScore
-      const percentage = (studentScore / rubricScore) * 100
+      const studentScore = scores[el].studentScore;
+      const rubricScore = scores[el].rubricScore;
+      const percentage = (studentScore / rubricScore) * 100;
       let obj = {
         size: `${75 - idx * 25}%`,
         values: [percentage],
@@ -62,9 +62,9 @@ const getPieConfig = (scores) => {
         borderColor: colors[idx],
         '-angleStart': 270,
         '-angleEnd': 110 + idx * 100,
-        text: el
-      }
-      area.push(obj)
+        text: el,
+      };
+      area.push(obj);
 
       let obj2 = {
         type: 'pie',
@@ -75,26 +75,26 @@ const getPieConfig = (scores) => {
         alpha: 0.25,
         size: 140 - idx * 40,
         slice: 100 - idx * 40,
-        placement: 'bottom'
-      }
-      shapes.push(obj2)
+        placement: 'bottom',
+      };
+      shapes.push(obj2);
     }
-  })
+  });
   return {
     ...initConfig,
     series: area,
-    shapes
-  }
-}
+    shapes,
+  };
+};
 
-export default function StudentSectionChart({idx, phase, component, scoreIdx, score}) {
+export default function StudentSectionChart({ idx, phase, component, scoreIdx, score }) {
   const config = useMemo(() => {
-    return getConfig(score[component])
-  }, [score[component]])
+    return getConfig(score[component]);
+  }, [score[component]]);
 
   const pieConfig = useMemo(() => {
-    return getPieConfig(score[component])
-  }, [score[component]])
+    return getPieConfig(score[component]);
+  }, [score[component]]);
 
   return (
     <div className="mb-10">
@@ -107,9 +107,9 @@ export default function StudentSectionChart({idx, phase, component, scoreIdx, sc
             </span>
             <span className="font-bold text-3xl opacity-50 text-orange-500">{component}</span>
           </h2>
-          <div className="w-full overflow-visible">
+          <div className="w-full overflow-visible flex justify-center items-center">
             {Object.keys(score[component]).length > 2 ? (
-              <ZingChart data={config} />
+              <ZingChart height={400} width={400} data={config} />
             ) : (
               <div className="flex justify-center items-center">
                 <ZingChart height={400} width={400} data={pieConfig} />
@@ -121,13 +121,17 @@ export default function StudentSectionChart({idx, phase, component, scoreIdx, sc
           <div className="w-full grid grid-cols-3 gap-3">
             {Object.keys(score[component])
               .filter((el) => score[component][el].rubricScore)
-              .sort((a, b) => score[component][a].studentScore / score[component][a].rubricScore - score[component][b].studentScore / score[component][b].rubricScore)
+              .sort(
+                (a, b) =>
+                  score[component][a].studentScore / score[component][a].rubricScore -
+                  score[component][b].studentScore / score[component][b].rubricScore,
+              )
               .map((el, idx) => {
-                return <ScoreCard key={idx} el={el} score={score[component][el]} />
+                return <ScoreCard key={idx} el={el} score={score[component][el]} />;
               })}
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
