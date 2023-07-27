@@ -115,7 +115,7 @@ export default function StudentSectionChart({ idx, phase, component, scoreIdx, s
               <ZingChart height={size} width={size} data={config} />
             ) : (
               <div className="flex justify-center items-center">
-                <ZingChart height={size} width={size} data={pieConfig} />
+                <ZingChart height={400} width={400} data={pieConfig} />
               </div>
             )}
           </div>
