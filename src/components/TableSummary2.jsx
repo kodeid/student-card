@@ -5,13 +5,13 @@ export default function TableSummary2({ summaryStatus, phaseName }) {
   const [weekly, setWeekly] = useState(null);
 
   useEffect(() => {
-    const _data = summaryStatus.find((el) => el.name == phaseName);
-    setAttendance(_data.attendanceStatus);
-    setWeekly(_data.weeklyStatus);
+    const _data = summaryStatus?.find((el) => el?.name == phaseName);
+    setAttendance(_data?.attendanceStatus);
+    setWeekly(_data?.weeklyStatus);
   }, []);
 
   if (!attendance) {
-    return <p>Loading...</p>;
+    return <p></p>;
   }
 
   return (
