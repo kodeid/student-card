@@ -16,10 +16,10 @@ export default function TableSummary2({ summaryStatus, phaseName }) {
 
   return (
     <div className="flex flex-wrap md:flex-row-reverse mt-5 justify-between">
-      <div>
-        <table className="table table-compact table-zebra w-full md:w-1/3">
+      <div className="ml-8">
+        <table className="table w-full md:w-1/3">
           <thead>
-            <tr className="border-y-2">
+            <tr className="">
               {Object.keys(attendance).map((key, idx) => {
                 return (
                   <th colSpan={1} className="text-center" key={idx}>
@@ -30,16 +30,15 @@ export default function TableSummary2({ summaryStatus, phaseName }) {
             </tr>
           </thead>
           <tbody>
-            <tr className="border-y-2 rounded-full" style={{ borderRadius: '100px' }}>
+            <tr>
               {Object.keys(attendance).map((key, idx) => {
                 return (
                   <td className="text-xs text-center" key={idx}>
-                    <span className="font-bold mr-1">{attendance[key]}</span>
+                    <span className="mr-1">{attendance[key]}</span>
                   </td>
                 );
               })}
             </tr>
-            <tr></tr>
           </tbody>
         </table>
       </div>
