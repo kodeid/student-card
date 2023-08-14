@@ -17,7 +17,9 @@ export default function StudentFeedbackList({ filteredData, arrPhase, activePhas
                         <div className="flex md:flex-row flex-row-reverse items-center gap-3">
                           <div className="md:text-right md:whitespace-nowrap">
                             <div className="font-bold">{el.instructor}</div>
-                            <div className="opacity-50">{formatDate(el.date)}</div>
+                            <div className="opacity-50">
+                              {JSON.stringify(formatDate(el.date)) !== 'null' && formatDate(el.date)}
+                            </div>
                           </div>
                           <div className="avatar">
                             <div className="w-16 rounded-full">

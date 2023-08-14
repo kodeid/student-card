@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import TableSummary from './TableSummary';
+import TableSummary2 from './TableSummary2';
 
 const getAssignment = (score) => {
   let challenges = {};
@@ -20,7 +21,7 @@ const getAssignment = (score) => {
   return challenges;
 };
 
-export default function StudentSectionStudentCard({ scoreIdx, phase, score }) {
+export default function StudentSectionStudentCard({ scoreIdx, phase, score, summaryStatus, phaseName }) {
   const mainAssignment = useMemo(() => {
     return getAssignment(score);
   }, [score]);
@@ -29,6 +30,7 @@ export default function StudentSectionStudentCard({ scoreIdx, phase, score }) {
       {scoreIdx > 0 && <hr className="my-10" />}
 
       <TableSummary score={score} category={phase.category} />
+      <TableSummary2 summaryStatus={summaryStatus} phaseName={phaseName} />
       <div className="w-full flex justify-center">
         <div className="w-full flex flex-col justify-center items-center">
           <h1 className="font-bold text-xl text-center mb-5 mt-5">Student Card</h1>

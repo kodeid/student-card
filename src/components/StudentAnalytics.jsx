@@ -1,7 +1,7 @@
 import 'zingchart/es6';
 import TableSummary from './TableSummary';
 import StudentSectionChart from './StudentSectionChart';
-import TableAttendance from './TableSummary2';
+import TableSummary2 from './TableSummary2';
 
 export default function StudentAnalytics({ filteredData, arrPhase, activePhase, summaryStatus }) {
   return (
@@ -21,7 +21,7 @@ export default function StudentAnalytics({ filteredData, arrPhase, activePhase, 
                   <div key={scoreIdx}>
                     {scoreIdx > 0 && <hr className="w-full mb-10 mt-10" />}
                     <TableSummary score={score} category={phase.category} />
-                    <TableAttendance phaseName={phaseName} summaryStatus={summaryStatus} />
+                    {/* <TableSummary2 phaseName={phaseName} summaryStatus={summaryStatus} /> */}
                     {Object.keys(score).map((component, idx) => {
                       return (
                         <StudentSectionChart

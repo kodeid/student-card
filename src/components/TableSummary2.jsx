@@ -63,10 +63,10 @@ export default function TableSummary2({ summaryStatus, phaseName }) {
                     style={{
                       color:
                         weekly[key]['status'] == 'Saved'
-                          ? 'green'
+                          ? '#65a30d'
                           : weekly[key]['status'] == 'Warning'
-                          ? 'rgb(234 179 8)'
-                          : 'red',
+                          ? '#eab308'
+                          : '#dc2626',
                     }}
                   >
                     {weekly[key]['status']}
