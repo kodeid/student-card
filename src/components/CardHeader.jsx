@@ -198,8 +198,8 @@ export default function CardHeader({ detail, filteredData }) {
             Student Card
           </a>
         </div>
-        <img className="object-cover w-full" src="https://randomfox.tk/random_fox.php" />
-        {/* <img className="object-cover w-full" src="https://source.unsplash.com/random/?fox-animal/" /> */}
+        {/* <img className="object-cover w-full" src="https://randomfox.tk/random_fox.php" /> */}
+        <img className="object-cover w-full" src="https://source.unsplash.com/random/?fox-animal/" />
         {/* <img
           className="object-cover w-full"
           src={`https://randomfox.ca/images/${detail?.batches[0]?.name.split('-')[1]}.jpg`}
