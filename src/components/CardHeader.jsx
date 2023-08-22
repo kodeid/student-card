@@ -174,8 +174,6 @@ const getGrade = (score) => {
 };
 
 export default function CardHeader({ detail, filteredData }) {
-  const { studentCardId } = useParams();
-
   const scoreOverview = useMemo(() => {
     if (filteredData.length) {
       const summaryPerPhase = getSummaryPerPhase(filteredData);
@@ -190,7 +188,7 @@ export default function CardHeader({ detail, filteredData }) {
       <div className="h-64 w-full absolute top-0 left-0 right-0 overflow-hidden flex justify-center items-center">
         <div className="absolute bottom-0 left-0 ml-2 mb-2">
           <a
-            href={`https://docs.google.com/spreadsheets/d/${studentCardId}`}
+            href={`https://docs.google.com/spreadsheets/d/${detail.studentCardId}`}
             target="_blank"
             className="btn btn-ghost btn-sm text-white text-xs opacity-90"
             rel="noreferrer"

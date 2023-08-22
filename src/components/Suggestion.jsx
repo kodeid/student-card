@@ -28,6 +28,7 @@ export default function Suggestion({ filteredData, arrPhase, activePhase, summar
   const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // fetch masih disini, need better alternative
   useEffect(() => {
     setSuggestions([]);
     setIsLoading(true);
