@@ -134,7 +134,7 @@ export default function Suggestion({ filteredData, arrPhase, activePhase, summar
                                     return (
                                       <a key={index} href={element} target="_blank">
                                         <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 mr-2 rounded-md">
-                                          Referensi Belajar 1
+                                          Referensi Belajar {index + 1}
                                         </span>
                                       </a>
                                     );
